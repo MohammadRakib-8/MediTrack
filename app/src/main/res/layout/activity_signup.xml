@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/textViewCreate_AccountSignUpP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="71dp"
+        android:text="Create Account"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editTextEmailAddressSignUpP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="29dp"
+        android:layout_marginEnd="1dp"
+        android:ems="10"
+        android:hint="Enter Your Email"
+        android:inputType="textEmailAddress"
+        app:layout_constraintEnd_toEndOf="@+id/editTextConfirmPasswordSignUpP"
+        app:layout_constraintTop_toBottomOf="@+id/editTextConfirmPasswordSignUpP" />
+
+    <EditText
+        android:id="@+id/editTextPasswordSignUpP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        android:ems="10"
+        android:hint="Enter Your Password"
+        android:inputType="textPassword"
+        app:layout_constraintStart_toStartOf="@+id/editTextNameSignUpP"
+        app:layout_constraintTop_toBottomOf="@+id/editTextNameSignUpP" />
+
+    <EditText
+        android:id="@+id/editTextConfirmPasswordSignUpP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="18dp"
+        android:ems="10"
+        android:hint="Enter Your Confirm Password"
+        android:inputType="textPassword"
+        app:layout_constraintStart_toStartOf="@+id/editTextPasswordSignUpP"
+        app:layout_constraintTop_toBottomOf="@+id/editTextPasswordSignUpP" />
+
+    <Button
+        android:id="@+id/createAccountButtonSignUpP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="31dp"
+        android:layout_marginBottom="25dp"
+        android:text="Create Account"
+        app:layout_constraintBottom_toTopOf="@+id/textViewAlready_have_an_accountSignUpP"
+        app:layout_constraintEnd_toEndOf="@+id/textViewSignInHereSignUpP" />
+
+    <TextView
+        android:id="@+id/textViewAlready_have_an_accountSignUpP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="66dp"
+        android:text="Already have an account?"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textViewSignInHereSignUpP"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewSignInHereSignUpP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginBottom="238dp"
+        android:text="Sign in here"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textViewAlready_have_an_accountSignUpP" />
+
+    <EditText
+        android:id="@+id/editTextNameSignUpP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:ems="10"
+        android:hint="Enter Your Name"
+        android:inputType="text"
+        android:text="Name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewCreate_AccountSignUpP" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

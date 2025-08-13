@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/loginButtonLoginP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="19dp"
+        android:text="Login"
+        app:layout_constraintEnd_toEndOf="@+id/editTexttPasswordLoginP"
+        app:layout_constraintStart_toStartOf="@+id/editTexttPasswordLoginP"
+        app:layout_constraintTop_toBottomOf="@+id/editTexttPasswordLoginP" />
+
+    <EditText
+        android:id="@+id/editTextEmailAddressLoginP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="179dp"
+        android:ems="10"
+        android:hint="Enter Your Email"
+        android:inputType="textEmailAddress"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editTexttPasswordLoginP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:hint="Enter Your Password"
+        android:inputType="textPassword"
+        app:layout_constraintStart_toStartOf="@+id/editTextEmailAddressLoginP"
+        app:layout_constraintTop_toBottomOf="@+id/editTextEmailAddressLoginP" />
+
+    <TextView
+        android:id="@+id/textViewDont_have_an_accountLoginP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="35dp"
+        android:text="Don't have an account?"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textViewSignUpLoginP"
+        app:layout_constraintEnd_toEndOf="@+id/textViewForgrtPasswordLoginP" />
+
+    <TextView
+        android:id="@+id/textViewForgrtPasswordLoginP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="17dp"
+        android:layout_marginEnd="6dp"
+        android:text="Forgrt Password?"
+        app:layout_constraintEnd_toEndOf="@+id/loginButtonLoginP"
+        app:layout_constraintTop_toBottomOf="@+id/textViewDont_have_an_accountLoginP" />
+
+    <TextView
+        android:id="@+id/textViewSignUpLoginP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="34dp"
+        android:text="Sign in here"
+        app:layout_constraintStart_toEndOf="@+id/textViewDont_have_an_accountLoginP"
+        app:layout_constraintTop_toBottomOf="@+id/loginButtonLoginP" />
+</androidx.constraintlayout.widget.ConstraintLayout>
