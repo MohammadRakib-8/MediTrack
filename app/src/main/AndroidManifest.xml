@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MediTrack">
         <activity
+            android:name=".Forget_Password"
+            android:exported="false" />
+        <activity
             android:name=".Signup_Activity"
             android:exported="false" />
         <activity
