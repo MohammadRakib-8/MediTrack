@@ -3,6 +3,7 @@ package com.example.meditrack
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.meditrack.databinding.ActivityMainBinding
@@ -16,6 +17,9 @@ class MainActivity : AppCompatActivity() {
 
         // Use view binding for layout
         binding = ActivityMainBinding.inflate(layoutInflater)
+        //for splashscreen scope
+        Thread.sleep(1000)
+        installSplashScreen()
         setContentView(binding.root)
 
         // Handle system bar insets

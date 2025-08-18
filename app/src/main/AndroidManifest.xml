@@ -24,6 +24,7 @@
             android:name=".Login_And_Signup_Activity"
             android:exported="false" />
         <activity
+            android:theme="@style/Theme.App.SplashScreen"
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
