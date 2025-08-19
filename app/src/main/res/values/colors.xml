@@ -5,4 +5,12 @@
     <color name="fragment_add_medicine_background">#FF0000FF</color>
     <color name="fragment_home_page_background">#FF00FF00</color>
 
+    <color name="teal_700">#00796B</color>
+    <color name="purple_500">#6200EE</color>
+    <color name="blue">#2196F3</color>
+
+
+    <color name="teal_200">#80CBC4</color>
+    <color name="purple_200">#BB86FC</color>
+    <color name="gray_light">#E0E0E0</color>
 </resources>

@@ -30,20 +30,23 @@ class MainActivity : AppCompatActivity() {
         }
 
          //Button listeners
-        binding.buttonHome.setOnClickListener {
-            replaceFragment(Home_Page_Fragment())
-        }
+//        binding.buttonHome.setOnClickListener {
+//            replaceFragment(Home_Page_Fragment())
+//        }
+//
+//        binding.buttonMedicine.setOnClickListener {
+//            replaceFragment(Add_Medicine_Fragment())
+//        }
+//    }
+//
+//    public fun replaceFragment(fragment:androidx.fragment.app.Fragment)
+//    {
+//        val fragmentManager = supportFragmentManager
+//        val fragmentTransaction = fragmentManager.beginTransaction()
+//        fragmentTransaction.replace(R.id.fragmentContainer,fragment)
+//        fragmentTransaction.commit()
+//    }
 
-        binding.buttonMedicine.setOnClickListener {
-            replaceFragment(Add_Medicine_Fragment())
-        }
-    }
 
-    public fun replaceFragment(fragment:androidx.fragment.app.Fragment)
-    {
-        val fragmentManager = supportFragmentManager
-        val fragmentTransaction = fragmentManager.beginTransaction()
-        fragmentTransaction.replace(R.id.fragmentContainer,fragment)
-        fragmentTransaction.commit()
     }
 }
