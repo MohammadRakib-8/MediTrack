@@ -6,24 +6,15 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
-class Signup_Activity : AppCompatActivity() {
+class View_Schedule : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_signup)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.signup_layout)) { v, insets ->
+        setContentView(R.layout.activity_view_schedule)
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
-
-
-            override fun onSaveInstanceState(outState: Bundle) {
-                super.onSaveInstanceState(outState)
-                outstate.putString("email", email)
-                outstate.putString("password", password)
-                outstate.putString("name", name)
-                outstate.putString("confirmPassword", confirmPassword)
-            })
         }
     }
 }

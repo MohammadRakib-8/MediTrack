@@ -25,6 +25,7 @@
         android:ems="10"
         android:hint="Enter Your Email"
         android:inputType="textEmailAddress"
+        android:saveEnabled="false"
         app:layout_constraintEnd_toEndOf="@+id/editTextConfirmPasswordSignUpP"
         app:layout_constraintTop_toBottomOf="@+id/editTextConfirmPasswordSignUpP" />
 
@@ -36,6 +37,7 @@
         android:ems="10"
         android:hint="Enter Your Password"
         android:inputType="textPassword"
+        android:saveEnabled="false"
         app:layout_constraintStart_toStartOf="@+id/editTextNameSignUpP"
         app:layout_constraintTop_toBottomOf="@+id/editTextNameSignUpP" />
 
@@ -48,6 +50,7 @@
         android:ems="10"
         android:hint="Enter Your Confirm Password"
         android:inputType="textPassword"
+        android:saveEnabled="false"
         app:layout_constraintStart_toStartOf="@+id/editTextPasswordSignUpP"
         app:layout_constraintTop_toBottomOf="@+id/editTextPasswordSignUpP" />
 
@@ -88,6 +91,7 @@
         android:ems="10"
         android:hint="Enter Your Name"
         android:inputType="text"
+        android:saveEnabled="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewCreate_AccountSignUpP" />
