@@ -5,12 +5,21 @@
     android:id="@+id/get_started_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/green_gradient_bg"
+    android:background="@drawable/getStarted"
     tools:context=".GetStartedActivity">
 
 
     <!-- Sign Up Link -->
-
+    <ImageView
+        android:id="@+id/backgroundImageForgetPassPage"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/getStarted"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
     <Button
         android:id="@+id/buttonGetStarted"
         android:layout_width="0dp"
