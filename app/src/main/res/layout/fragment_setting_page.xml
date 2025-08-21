@@ -55,6 +55,7 @@
             android:gravity="center_vertical"
             android:paddingStart="16dp"
             android:paddingEnd="16dp"
+            android:background="@color/gray"
             android:orientation="horizontal">
 
             <ImageView
@@ -99,6 +100,7 @@
             android:gravity="center_vertical"
             android:paddingStart="16dp"
             android:paddingEnd="16dp"
+            android:background="@color/gray"
             android:orientation="horizontal">
 
             <ImageView
@@ -144,6 +146,7 @@
             android:gravity="center_vertical"
             android:paddingStart="16dp"
             android:paddingEnd="16dp"
+            android:background="@color/gray"
             android:orientation="horizontal">
 
             <ImageView
