@@ -17,13 +17,8 @@ class Signup_Activity : AppCompatActivity() {
             insets
 
 
-            override fun onSaveInstanceState(outState: Bundle) {
-                super.onSaveInstanceState(outState)
-                outstate.putString("email", email)
-                outstate.putString("password", password)
-                outstate.putString("name", name)
-                outstate.putString("confirmPassword", confirmPassword)
-            })
+
+
         }
     }
 }
