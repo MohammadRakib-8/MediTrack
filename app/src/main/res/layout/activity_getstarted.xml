@@ -57,7 +57,7 @@
         android:clickable="true"
         android:focusable="true"
         android:text="Sign Up"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/blue"
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
