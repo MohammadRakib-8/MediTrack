@@ -6,10 +6,20 @@
     android:id="@+id/fragment_settings"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
-    tools:context=".SettingsFragment">
+    android:background="@drawable/home_page_background"
+    >
 
-    <!-- Page Title -->
+
+    <ImageView
+        android:id="@+id/backgroundImageForgetPassPage"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/forget_pass_page"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
     <TextView
         android:id="@+id/settingsTitle"
         android:layout_width="0dp"
@@ -24,7 +34,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- Divider -->
     <View
         android:id="@+id/divider"
         android:layout_width="0dp"
@@ -35,7 +44,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
-    <!-- Option 1: Notifications -->
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/cardNotifications"
         android:layout_width="0dp"
@@ -62,7 +70,7 @@
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:src="@drawable/ic_notifications"
-                android:tint="@color/teal_700"/>
+                app:tint="@color/teal_700" />
 
             <TextView
                 android:layout_width="0dp"
@@ -80,7 +88,7 @@
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
 
-    <!-- Option 2: Account Settings -->
+
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/cardAccount"
         android:layout_width="0dp"
@@ -107,7 +115,7 @@
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:src="@drawable/ic_account"
-                android:tint="@color/teal_700"/>
+                app:tint="@color/teal_700" />
 
             <TextView
                 android:layout_width="0dp"
@@ -122,11 +130,10 @@
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:src="@drawable/ic_arrow_right"
-                android:tint="@color/gray_dark"/>
+                app:tint="@color/black" />
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
 
-    <!-- Option 3: About App -->
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/cardAbout"
         android:layout_width="0dp"
@@ -168,7 +175,7 @@
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:src="@drawable/ic_arrow_right"
-                android:tint="@color/gray_dark"/>
+                android:tint="@color/gray"/>
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
 

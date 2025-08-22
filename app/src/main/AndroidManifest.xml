@@ -11,23 +11,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MediTrack">
-        <activity
-            android:name=".View_Schedule"
-            android:exported="false" />
+
         <activity
             android:name=".GetStartedActivity"
             android:exported="false" />
         <activity
-            android:name=".Signup_Activity"
+            android:name=".MainActivity"
             android:exported="false" />
         <activity
             android:name=".Forget_Password"
             android:exported="false" />
         <activity
-            android:name=".Login_And_Signup_Activity"
+            android:name=".Signup_Activity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".Login_And_Signup_Activity"
             android:exported="true">
 <!--            android:theme="@style/Theme.App.SplashScreen"-->
 

@@ -5,10 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
-    android:background="@color/white"
+android:background="@drawable/forget_pass_page"
     tools:context=".MedicineActivity">
-
-    <!-- Title -->
 
     <TextView
         android:id="@+id/titleText"
@@ -24,7 +22,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:padding="8dp"/>
 
-    <!-- Medicine Name -->
+
     <EditText
         android:id="@+id/medicineName"
         android:layout_width="0dp"
@@ -37,7 +35,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="16dp"/>
 
-    <!-- Dosage -->
     <EditText
         android:id="@+id/dosage"
         android:layout_width="0dp"
@@ -50,7 +47,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="12dp"/>
 
-    <!-- Date Picker -->
     <EditText
         android:id="@+id/datePicker"
         android:layout_width="0dp"
@@ -66,7 +62,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="12dp"/>
 
-    <!-- Time Picker -->
     <EditText
         android:id="@+id/timePicker"
         android:layout_width="0dp"
@@ -82,7 +77,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="12dp"/>
 
-    <!-- Save Button -->
     <Button
         android:id="@+id/saveBtn"
         android:layout_width="0dp"
