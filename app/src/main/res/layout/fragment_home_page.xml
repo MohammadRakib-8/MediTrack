@@ -10,7 +10,6 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <!-- Heading -->
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/tv_heading"
             android:layout_width="wrap_content"
@@ -21,7 +20,7 @@
             android:textColor="@color/teal_700"
             android:layout_marginBottom="20dp"/>
 
-        <!-- Medicine 2 -->
+
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -87,7 +86,6 @@
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
-        <!-- Medicine 3 -->
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -152,7 +150,6 @@
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
-        <!-- Medicine 4 -->
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
