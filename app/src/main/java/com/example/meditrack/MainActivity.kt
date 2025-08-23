@@ -15,11 +15,15 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
 
+        if(savedInstanceState==null){
+            replaceFragment(Fragment_Home_Page())
+        }
+
         // Use view binding for layout
         binding = ActivityMainBinding.inflate(layoutInflater)
-        //for splashscreen scope
-        Thread.sleep(1000)
-        installSplashScreen()
+//        //for splashscreen scope
+//        Thread.sleep(1000)
+//        installSplashScreen()
         setContentView(binding.root)
 
         // Handle system bar insets
@@ -30,23 +34,29 @@ class MainActivity : AppCompatActivity() {
         }
 
          //Button listeners
-//        binding.buttonHome.setOnClickListener {
-//            replaceFragment(Home_Page_Fragment())
-//        }
-//
-//        binding.buttonMedicine.setOnClickListener {
-//            replaceFragment(Add_Medicine_Fragment())
-//        }
-//    }
-//
-//    public fun replaceFragment(fragment:androidx.fragment.app.Fragment)
-//    {
-//        val fragmentManager = supportFragmentManager
-//        val fragmentTransaction = fragmentManager.beginTransaction()
-//        fragmentTransaction.replace(R.id.fragmentContainer,fragment)
-//        fragmentTransaction.commit()
-//    }
+        binding.btnHome.setOnClickListener {
+            replaceFragment(Fragment_Home_Page())
+        }
+
+        binding.btnTask.setOnClickListener {
+            replaceFragment(Add_Medicine_Fragment())
+        }
+
+        binding.btnSetting.setOnClickListener {
+            replaceFragment(Fragment_Setting_Page())
+        }
+
+
 
 
     }
+
+    fun replaceFragment(fragment:androidx.fragment.app.Fragment)
+    {
+        val fragmentManager = supportFragmentManager
+        val fragmentTransaction = fragmentManager.beginTransaction()
+        fragmentTransaction.replace(R.id.fragmentContainer,fragment)
+        fragmentTransaction.commit()
+    }
+
 }
