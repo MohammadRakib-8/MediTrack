@@ -47,8 +47,6 @@ class MainActivity : AppCompatActivity() {
         }
 
 
-
-
     }
 
     fun replaceFragment(fragment:androidx.fragment.app.Fragment)

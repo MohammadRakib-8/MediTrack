@@ -117,6 +117,8 @@
         android:textColor="@color/black"
         android:layout_marginTop="12dp"
         android:padding="4dp"
+        android:clickable="true"
+        android:focusable="true"
         app:layout_constraintTop_toBottomOf="@id/loginButtonLoginP"
         app:layout_constraintEnd_toEndOf="@id/loginButtonLoginP"/>
 
@@ -160,6 +162,8 @@
             android:textColor="#4290C7"
             android:textStyle="bold"
             android:textSize="14sp"
+            android:clickable="true"
+            android:focusable="true"
             android:paddingStart="6dp"/>
     </LinearLayout>
 

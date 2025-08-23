@@ -1,5 +1,6 @@
 package com.example.meditrack
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
@@ -7,8 +8,10 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.meditrack.databinding.ActivitySignupBinding
 
 class Signup_Activity : AppCompatActivity() {
+    lateinit var binding: ActivitySignupBinding
     private lateinit var nameEditText: EditText
     private lateinit var emailEditText: EditText
     private lateinit var passwordEditText: EditText
@@ -23,7 +26,8 @@ private var password:String?= null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_signup)
+        binding=ActivitySignupBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         // Initialize views
         emailEditText = findViewById(R.id.editTextNameSignUpP)
@@ -55,6 +59,10 @@ private var password:String?= null
 
 
         }
+        binding.textViewSignInHereSignUpP.setOnClickListener {
+            val intent = Intent(this,Login_And_Signup_Activity::class.java)
+            startActivity(intent)
+        }
     }
 
     // Save user input when activity may be destroyed
@@ -74,4 +82,6 @@ private var password:String?= null
         passwordEditText.setText(savedInstanceState.getString("password"))
         confirmPasswordEditText.setText(savedInstanceState.getString("confirmPassword"))
     }
+
+
 }
