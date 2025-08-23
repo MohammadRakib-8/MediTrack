@@ -29,35 +29,28 @@ private var password:String?= null
         binding=ActivitySignupBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Initialize views
         emailEditText = findViewById(R.id.editTextNameSignUpP)
         nameEditText = findViewById(R.id.editTextEmailAddressSignUpP)
         passwordEditText = findViewById(R.id.editTextPasswordSignUpP)
         confirmPasswordEditText = findViewById(R.id.editTextConfirmPasswordSignUpP)
         signupButton = findViewById(R.id.createAccountButtonSignUpP)
 
-        // Restore saved state if available
         if (savedInstanceState != null) {
             email = savedInstanceState.getString("email")
             name = savedInstanceState.getString("name")
             password = savedInstanceState.getString("password")
             confirmPassword = savedInstanceState.getString("confirmPassword")
         }
-
-        // Apply restored values to EditTexts
         emailEditText.setText(email)
         nameEditText.setText(name)
         passwordEditText.setText(password)
         confirmPasswordEditText.setText(confirmPassword)
 
-        // Button click listener (example)
         signupButton.setOnClickListener {
             email = emailEditText.text.toString()
             name = nameEditText.text.toString()
             password = passwordEditText.text.toString()
             confirmPassword = confirmPasswordEditText.text.toString()
-
-
         }
         binding.textViewSignInHereSignUpP.setOnClickListener {
             val intent = Intent(this,Login_And_Signup_Activity::class.java)
@@ -65,7 +58,6 @@ private var password:String?= null
         }
     }
 
-    // Save user input when activity may be destroyed
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
         outState.putString("email", emailEditText.text.toString())
@@ -74,7 +66,6 @@ private var password:String?= null
         outState.putString("confirmPassword", confirmPasswordEditText.text.toString())
     }
 
-    // Optional: called after onStart(), restore state if needed
     override fun onRestoreInstanceState(savedInstanceState: Bundle) {
         super.onRestoreInstanceState(savedInstanceState)
         emailEditText.setText(savedInstanceState.getString("email"))

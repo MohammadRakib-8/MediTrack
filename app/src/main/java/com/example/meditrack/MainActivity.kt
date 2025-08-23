@@ -19,21 +19,18 @@ class MainActivity : AppCompatActivity() {
             replaceFragment(Fragment_Home_Page())
         }
 
-        // Use view binding for layout
         binding = ActivityMainBinding.inflate(layoutInflater)
 //        //for splashscreen scope
 //        Thread.sleep(1000)
 //        installSplashScreen()
         setContentView(binding.root)
 
-        // Handle system bar insets
         ViewCompat.setOnApplyWindowInsetsListener(binding.main) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
 
-         //Button listeners
         binding.btnHome.setOnClickListener {
             replaceFragment(Fragment_Home_Page())
         }

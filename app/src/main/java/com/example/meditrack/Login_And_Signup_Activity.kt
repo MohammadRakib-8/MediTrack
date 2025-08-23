@@ -20,9 +20,6 @@ class Login_And_Signup_Activity : AppCompatActivity() {
      setContentView(binding.root)
 
 
-
-
-
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.login_signup_layout)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
@@ -38,6 +35,11 @@ class Login_And_Signup_Activity : AppCompatActivity() {
 
         binding.textViewSignUpLoginP.setOnClickListener {
             val intent =Intent(this,Signup_Activity::class.java)
+            startActivity(intent)
+        }
+
+        binding.loginButtonLoginP.setOnClickListener {
+            val intent=Intent(this,MainActivity::class.java)
             startActivity(intent)
         }
     }
