@@ -6,30 +6,30 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
-    android:background="@color/white"
+    android:background="#C8C0C0"
     tools:context=".MainActivity">
+
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragmentContainer"
         android:layout_width="match_parent"
         android:layout_height="700dp"
-        tools:layout_editor_absoluteX="-19dp"
-        tools:layout_editor_absoluteY="-18dp"
-        />
-
+        tools:layout_editor_absoluteX="17dp"
+        tools:layout_editor_absoluteY="-2dp" />
 
     <LinearLayout
         android:id="@+id/menuBar"
         android:layout_width="382dp"
         android:layout_height="63dp"
-        android:background="@color/gray"
+        android:background="#333"
         android:gravity="center"
         android:orientation="horizontal"
         android:padding="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        >
 
 
         <com.google.android.material.button.MaterialButton
@@ -39,7 +39,7 @@
             android:layout_weight="1"
             android:textColor="@android:color/white"
             android:textSize="20sp"
-            app:backgroundTint="@color/gray"
+            app:backgroundTint="#333"
             app:cornerRadius="16dp"
             app:icon="@drawable/home_icon"
             app:iconGravity="textStart"
@@ -53,7 +53,7 @@
             android:text=""
             android:textColor="@android:color/white"
             android:textSize="20sp"
-            app:backgroundTint="@color/gray"
+            app:backgroundTint="#333"
             app:cornerRadius="16dp"
             app:icon="@drawable/medicine_icon"
             app:iconGravity="textStart"
@@ -66,7 +66,7 @@
             android:layout_weight="1"
             android:textColor="@android:color/white"
             android:textSize="20sp"
-            app:backgroundTint="@color/gray"
+            app:backgroundTint="#333"
             app:cornerRadius="16dp"
             app:icon="@drawable/setting_icon"
             app:iconGravity="textStart"

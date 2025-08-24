@@ -5,10 +5,10 @@
 
     <item>
         <bitmap
-            android:src="@drawable/logo"
-            android:gravity="fill"
-            android:width="150dp"
-            android:height="150dp" />
+            android:src="@drawable/app_splash_logo"
+            android:gravity="center"
+            android:width="50dp"
+            android:height="50dp" />
     </item>
 
 </layer-list>
