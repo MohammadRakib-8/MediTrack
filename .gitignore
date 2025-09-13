@@ -1,15 +1,56 @@
-*.iml
-.gradle
-/local.properties
-/.idea/caches
-/.idea/libraries
-/.idea/modules.xml
-/.idea/workspace.xml
-/.idea/navEditor.xml
-/.idea/assetWizardSettings.xml
-.DS_Store
-/build
-/captures
-.externalNativeBuild
-.cxx
+# ============================================
+# Android + Firebase .gitignore (Final Best)
+# ============================================
+
+# --- Gradle / Build ---
+.gradle/
+build/
+**/build/
+!gradle-wrapper.jar
+
+# --- Local configuration / secrets ---
 local.properties
+*.properties
+
+# --- Firebase configuration ---
+app/google-services.json
+google-services.json
+
+# --- Signing keys / certificates ---
+*.jks
+*.keystore
+*.pem
+*.p12
+*.pfx
+
+# --- Android Studio / IntelliJ IDEA ---
+*.iml
+.idea/
+.idea/caches/
+.idea/libraries/
+.idea/modules.xml
+.idea/workspace.xml
+.idea/navEditor.xml
+.idea/assetWizardSettings.xml
+
+# --- OS-specific junk ---
+.DS_Store
+Thumbs.db
+
+# --- Logs ---
+*.log
+
+# --- Crashlytics / Fabric ---
+crashlytics-build.properties
+fabric.properties
+
+# --- NDK / CMake / External native build ---
+obj/
+.externalNativeBuild/
+.cxx/
+
+# --- Generated / output files ---
+captures/
+outputs/
+*.apk
+*.aab
