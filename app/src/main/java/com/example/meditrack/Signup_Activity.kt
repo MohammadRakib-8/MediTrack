@@ -4,13 +4,13 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
-import androidx.activity.enableEdgeToEdge
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.example.meditrack.databinding.ActivitySignupBinding
+import com.google.firebase.auth.FirebaseAuth
 
 class Signup_Activity : AppCompatActivity() {
+
     lateinit var binding: ActivitySignupBinding
     private lateinit var nameEditText: EditText
     private lateinit var emailEditText: EditText
@@ -18,19 +18,22 @@ class Signup_Activity : AppCompatActivity() {
     private lateinit var confirmPasswordEditText: EditText
     private lateinit var signupButton: Button
 
+    private lateinit var auth: FirebaseAuth
 
-private var email:String?= null
-private var password:String?= null
-    private var confirmPassword:String?= null
-    private var name :String?= null
+    private var email: String? = null
+    private var password: String? = null
+    private var confirmPassword: String? = null
+    private var name: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding=ActivitySignupBinding.inflate(layoutInflater)
+        binding = ActivitySignupBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        emailEditText = findViewById(R.id.editTextNameSignUpP)
-        nameEditText = findViewById(R.id.editTextEmailAddressSignUpP)
+        auth = FirebaseAuth.getInstance()
+
+        emailEditText = findViewById(R.id.editTextEmailAddressSignUpP)
+        nameEditText = findViewById(R.id.editTextNameSignUpP)
         passwordEditText = findViewById(R.id.editTextPasswordSignUpP)
         confirmPasswordEditText = findViewById(R.id.editTextConfirmPasswordSignUpP)
         signupButton = findViewById(R.id.createAccountButtonSignUpP)
@@ -47,15 +50,51 @@ private var password:String?= null
         confirmPasswordEditText.setText(confirmPassword)
 
         signupButton.setOnClickListener {
-            email = emailEditText.text.toString()
-            name = nameEditText.text.toString()
-            password = passwordEditText.text.toString()
-            confirmPassword = confirmPasswordEditText.text.toString()
+            email = emailEditText.text.toString().trim()
+            name = nameEditText.text.toString().trim()
+            password = passwordEditText.text.toString().trim()
+            confirmPassword = confirmPasswordEditText.text.toString().trim()
+
+            if (validateInputs()) {
+                signUpWithFirebase(email!!, password!!)
+            }
         }
+
         binding.textViewSignInHereSignUpP.setOnClickListener {
-            val intent = Intent(this,Login_And_Signup_Activity::class.java)
+            val intent = Intent(this, Login_And_Signup_Activity::class.java)
             startActivity(intent)
         }
+    }
+
+    private fun validateInputs(): Boolean {
+        if (name.isNullOrEmpty() || email.isNullOrEmpty() || password.isNullOrEmpty() || confirmPassword.isNullOrEmpty()) {
+            Toast.makeText(this, "Please fill all fields", Toast.LENGTH_SHORT).show()
+            return false
+        }
+        if (password != confirmPassword) {
+            Toast.makeText(this, "Passwords do not match", Toast.LENGTH_SHORT).show()
+            return false
+        }
+        if (password!!.length < 6) {
+            Toast.makeText(this, "Password must be at least 6 characters", Toast.LENGTH_SHORT).show()
+            return false
+        }
+        return true
+    }
+
+    private fun signUpWithFirebase(email: String, password: String) {
+        auth.createUserWithEmailAndPassword(email, password)
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    Toast.makeText(this, "Account created successfully!", Toast.LENGTH_SHORT).show()
+
+                    val intent = Intent(this, Login_And_Signup_Activity::class.java)
+                    startActivity(intent)
+                    finish()
+                } else {
+                    Toast.makeText(this, "Error: ${task.exception?.message}", Toast.LENGTH_LONG).show()
+                }
+            }
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
@@ -73,6 +112,4 @@ private var password:String?= null
         passwordEditText.setText(savedInstanceState.getString("password"))
         confirmPasswordEditText.setText(savedInstanceState.getString("confirmPassword"))
     }
-
-
 }

@@ -2,45 +2,55 @@ package com.example.meditrack
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import com.example.meditrack.databinding.ActivityForgetPasswordBinding
 import com.example.meditrack.databinding.ActivityLoginAndSignupBinding
+import com.google.firebase.auth.FirebaseAuth
 
 class Login_And_Signup_Activity : AppCompatActivity() {
-      lateinit var binding:ActivityLoginAndSignupBinding
+
+    private lateinit var binding: ActivityLoginAndSignupBinding
+    private lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
+        binding = ActivityLoginAndSignupBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-     binding=ActivityLoginAndSignupBinding.inflate(layoutInflater)
-     setContentView(binding.root)
-
-
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.login_signup_layout)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
-
+        auth = FirebaseAuth.getInstance()
 
         binding.textViewForgetPasswordLoginP.setOnClickListener {
-            val intent = Intent(this, Forget_Password::class.java)
-            startActivity(intent)
+            startActivity(Intent(this, Forget_Password::class.java))
         }
 
-
         binding.textViewSignUpLoginP.setOnClickListener {
-            val intent =Intent(this,Signup_Activity::class.java)
-            startActivity(intent)
+            startActivity(Intent(this, Signup_Activity::class.java))
         }
 
         binding.loginButtonLoginP.setOnClickListener {
-            val intent=Intent(this,MainActivity::class.java)
-            startActivity(intent)
+            val email = binding.editTextEmailAddressLoginP.text.toString().trim()
+            val password = binding.editTexttPasswordLoginP.text.toString().trim()
+
+            if (email.isEmpty() || password.isEmpty()) {
+                Toast.makeText(this, "Please enter email and password", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
+            loginUser(email, password)
         }
+    }
+
+    private fun loginUser(email: String, password: String) {
+        auth.signInWithEmailAndPassword(email, password)
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    Toast.makeText(this, "Login Successful", Toast.LENGTH_SHORT).show()
+                    startActivity(Intent(this, MainActivity::class.java))
+                    finish()
+                } else {
+
+                    Toast.makeText(this, "Login Failed: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
+                }
+            }
     }
 }
