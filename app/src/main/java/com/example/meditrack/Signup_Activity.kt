@@ -8,10 +8,12 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.meditrack.databinding.ActivitySignupBinding
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 
 class Signup_Activity : AppCompatActivity() {
 
-    lateinit var binding: ActivitySignupBinding
+    private lateinit var binding: ActivitySignupBinding
+
     private lateinit var nameEditText: EditText
     private lateinit var emailEditText: EditText
     private lateinit var passwordEditText: EditText
@@ -19,11 +21,12 @@ class Signup_Activity : AppCompatActivity() {
     private lateinit var signupButton: Button
 
     private lateinit var auth: FirebaseAuth
+    private lateinit var firestore: FirebaseFirestore
 
+    private var name: String? = null
     private var email: String? = null
     private var password: String? = null
     private var confirmPassword: String? = null
-    private var name: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,6 +34,7 @@ class Signup_Activity : AppCompatActivity() {
         setContentView(binding.root)
 
         auth = FirebaseAuth.getInstance()
+        firestore = FirebaseFirestore.getInstance()
 
         emailEditText = findViewById(R.id.editTextEmailAddressSignUpP)
         nameEditText = findViewById(R.id.editTextNameSignUpP)
@@ -43,11 +47,12 @@ class Signup_Activity : AppCompatActivity() {
             name = savedInstanceState.getString("name")
             password = savedInstanceState.getString("password")
             confirmPassword = savedInstanceState.getString("confirmPassword")
+
+            emailEditText.setText(email)
+            nameEditText.setText(name)
+            passwordEditText.setText(password)
+            confirmPasswordEditText.setText(confirmPassword)
         }
-        emailEditText.setText(email)
-        nameEditText.setText(name)
-        passwordEditText.setText(password)
-        confirmPasswordEditText.setText(confirmPassword)
 
         signupButton.setOnClickListener {
             email = emailEditText.text.toString().trim()
@@ -56,13 +61,12 @@ class Signup_Activity : AppCompatActivity() {
             confirmPassword = confirmPasswordEditText.text.toString().trim()
 
             if (validateInputs()) {
-                signUpWithFirebase(email!!, password!!)
+                signUpWithFirebase(email!!, password!!, name!!)
             }
         }
 
         binding.textViewSignInHereSignUpP.setOnClickListener {
-            val intent = Intent(this, Login_And_Signup_Activity::class.java)
-            startActivity(intent)
+            startActivity(Intent(this, Login_And_Signup_Activity::class.java))
         }
     }
 
@@ -82,15 +86,30 @@ class Signup_Activity : AppCompatActivity() {
         return true
     }
 
-    private fun signUpWithFirebase(email: String, password: String) {
+    private fun signUpWithFirebase(email: String, password: String, name: String) {
         auth.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
-                    Toast.makeText(this, "Account created successfully!", Toast.LENGTH_SHORT).show()
+                    val userId = auth.currentUser?.uid
 
-                    val intent = Intent(this, Login_And_Signup_Activity::class.java)
-                    startActivity(intent)
-                    finish()
+                    val userMap = hashMapOf(
+                        "uid" to userId,
+                        "name" to name,
+                        "email" to email
+                    )
+
+                    firestore.collection("users")
+                        .document(userId!!)
+                        .set(userMap)
+                        .addOnSuccessListener {
+                            Toast.makeText(this, "Account created successfully!", Toast.LENGTH_SHORT).show()
+                            startActivity(Intent(this, Login_And_Signup_Activity::class.java))
+                            finish()
+                        }
+                        .addOnFailureListener { e ->
+                            Toast.makeText(this, "Failed to save user: ${e.message}", Toast.LENGTH_LONG).show()
+                        }
+
                 } else {
                     Toast.makeText(this, "Error: ${task.exception?.message}", Toast.LENGTH_LONG).show()
                 }

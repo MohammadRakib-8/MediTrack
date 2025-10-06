@@ -10,12 +10,14 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.card.MaterialCardView
-import com.google.firebase.Firebase
-import com.google.firebase.firestore.firestore
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 
 class Fragment_Home_Page : Fragment(R.layout.fragment_home_page) {
 
     private lateinit var containerLayout: LinearLayout
+    private val db = FirebaseFirestore.getInstance()
+    private val auth = FirebaseAuth.getInstance()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -26,13 +28,18 @@ class Fragment_Home_Page : Fragment(R.layout.fragment_home_page) {
     }
 
     private fun fetchMedicines() {
-        val db = Firebase.firestore
+        val userId = auth.currentUser?.uid
+        if (userId == null) {
+            Toast.makeText(requireContext(), "User not logged in!", Toast.LENGTH_SHORT).show()
+            return
+        }
 
-        db.collection("medicines")
+        db.collection("users")
+            .document(userId)
+            .collection("medicines")
             .get()
             .addOnSuccessListener { result ->
                 containerLayout.removeAllViews()
-
                 for (document in result) {
                     val medicine = Medicine(
                         name = document.getString("name") ?: "",
@@ -40,7 +47,6 @@ class Fragment_Home_Page : Fragment(R.layout.fragment_home_page) {
                         date = document.getString("date") ?: "",
                         time = document.getString("time") ?: ""
                     )
-
                     addMedicineCard(medicine)
                 }
             }
