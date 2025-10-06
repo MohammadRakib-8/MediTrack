@@ -42,6 +42,7 @@ class Fragment_Home_Page : Fragment(R.layout.fragment_home_page) {
                 containerLayout.removeAllViews()
                 for (document in result) {
                     val medicine = Medicine(
+                        id = document.id,  // Added id for deletion
                         name = document.getString("name") ?: "",
                         dose = document.getString("dose") ?: "",
                         date = document.getString("date") ?: "",
@@ -62,16 +63,35 @@ class Fragment_Home_Page : Fragment(R.layout.fragment_home_page) {
         val nameText = cardView.findViewById<TextView>(R.id.txtMedicineName)
         val doseText = cardView.findViewById<TextView>(R.id.txtDose)
         val dateText = cardView.findViewById<TextView>(R.id.txtDateTime)
-        val editBtn = cardView.findViewById<MaterialButton>(R.id.btnEdit)
+        val deleteBtn = cardView.findViewById<MaterialButton>(R.id.btnDelete)
 
         nameText.text = medicine.name
         doseText.text = medicine.dose
         dateText.text = "${medicine.date} • ${medicine.time}"
 
-        editBtn.setOnClickListener {
-            Toast.makeText(requireContext(), "Edit ${medicine.name}", Toast.LENGTH_SHORT).show()
+        deleteBtn.setOnClickListener {
+            val userId = auth.currentUser?.uid
+            if (userId != null) {
+                db.collection("users")
+                    .document(userId)
+                    .collection("medicines")
+                    .document(medicine.id)
+                    .delete()
+                    .addOnSuccessListener {
+                        Toast.makeText(requireContext(), "${medicine.name} deleted!", Toast.LENGTH_SHORT).show()
+                        containerLayout.removeView(cardView) // Remove card from UI
+                    }
+                    .addOnFailureListener { e ->
+                        Toast.makeText(requireContext(), "Failed to delete ${medicine.name}: ${e.message}", Toast.LENGTH_SHORT).show()
+                    }
+            } else {
+                Toast.makeText(requireContext(), "User not logged in!", Toast.LENGTH_SHORT).show()
+            }
         }
 
         containerLayout.addView(cardView)
     }
 }
+
+
+

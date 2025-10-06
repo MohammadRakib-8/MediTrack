@@ -54,11 +54,11 @@
         </LinearLayout>
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnEdit"
+            android:id="@+id/btnDelete"
             style="@style/Widget.Material3.Button.TonalButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Edit"
+            android:text="Delete"
             android:textSize="13sp"/>
     </LinearLayout>
 </com.google.android.material.card.MaterialCardView>
