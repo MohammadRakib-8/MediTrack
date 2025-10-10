@@ -21,9 +21,7 @@ class Fragment_Home_Page : Fragment(R.layout.fragment_home_page) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         containerLayout = view.findViewById(R.id.medicineContainer)
-
         fetchMedicines()
     }
 
@@ -39,10 +37,12 @@ class Fragment_Home_Page : Fragment(R.layout.fragment_home_page) {
             .collection("medicines")
             .get()
             .addOnSuccessListener { result ->
+                if (!isAdded) return@addOnSuccessListener
+
                 containerLayout.removeAllViews()
                 for (document in result) {
                     val medicine = Medicine(
-                        id = document.id,  // Added id for deletion
+                        id = document.id,
                         name = document.getString("name") ?: "",
                         dose = document.getString("dose") ?: "",
                         date = document.getString("date") ?: "",
@@ -52,12 +52,15 @@ class Fragment_Home_Page : Fragment(R.layout.fragment_home_page) {
                 }
             }
             .addOnFailureListener { e ->
+                if (!isAdded) return@addOnFailureListener
                 Toast.makeText(requireContext(), "Error: ${e.message}", Toast.LENGTH_SHORT).show()
             }
     }
 
     private fun addMedicineCard(medicine: Medicine) {
-        val cardView = LayoutInflater.from(requireContext())
+        val ctx = context ?: return
+
+        val cardView = LayoutInflater.from(ctx)
             .inflate(R.layout.item_medicine_card, containerLayout, false) as MaterialCardView
 
         val nameText = cardView.findViewById<TextView>(R.id.txtMedicineName)
@@ -78,20 +81,20 @@ class Fragment_Home_Page : Fragment(R.layout.fragment_home_page) {
                     .document(medicine.id)
                     .delete()
                     .addOnSuccessListener {
-                        Toast.makeText(requireContext(), "${medicine.name} deleted!", Toast.LENGTH_SHORT).show()
-                        containerLayout.removeView(cardView) // Remove card from UI
+                        if (!isAdded) return@addOnSuccessListener
+                        Toast.makeText(ctx, "${medicine.name} deleted!", Toast.LENGTH_SHORT).show()
+                        containerLayout.removeView(cardView)
                     }
                     .addOnFailureListener { e ->
-                        Toast.makeText(requireContext(), "Failed to delete ${medicine.name}: ${e.message}", Toast.LENGTH_SHORT).show()
+                        if (!isAdded) return@addOnFailureListener
+                        Toast.makeText(ctx, "Failed to delete ${medicine.name}: ${e.message}", Toast.LENGTH_SHORT).show()
                     }
             } else {
-                Toast.makeText(requireContext(), "User not logged in!", Toast.LENGTH_SHORT).show()
+                if (!isAdded) return@setOnClickListener
+                Toast.makeText(ctx, "User not logged in!", Toast.LENGTH_SHORT).show()
             }
         }
 
         containerLayout.addView(cardView)
     }
 }
-
-
-
